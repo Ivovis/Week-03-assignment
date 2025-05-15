@@ -15,12 +15,7 @@ function updateGameState() {
 //===========================================================================
 // called by the cookie image being clicked by user
 function userMouseClick() {
-  //   console.log("userMouseClick() called");
-
-  // add 1 to the current clicks
   gameState.totalClicks += 1;
-
-  // update the display
   document.getElementById("clicksTotalText").textContent =
     gameState.totalClicks + " clicks";
 }
@@ -44,34 +39,34 @@ function initInterval() {
 //  calls the upgrades API to get all the upgrades, called when page loads
 // adds in the upgrade buttons and configures them
 async function getUpgrades() {
-  //API url: https://cookie-upgrade-api.vercel.app/api/upgrades
-  console.log("getUpgrades() called");
-
   const response = await fetch(
     "https://cookie-upgrade-api.vercel.app/api/upgrades"
   );
 
-  // should check here that response.status is 200
-  // if not we should use a fall back list of upgrades
-
   upgradeList = await response.json();
-
-  // overthinking this - if the request times out upgradeList will not be what we expect ?
 
   // loop through the upgradeList array and create a button for each entry
   // make the button id match the object.id
-  // make the buttons text includes the object.name object.cost,object.increase
-  // make the button disabled - the interval timer will enable
+  // make the buttons text up from the name,cost and increase
+  // make the button disabled - the interval timer will enable when the player has enough clicks
 
-  // upgrade the upgradeContainer element
+  // get the upgradeContainer element
   upCon = document.getElementById("upgradesContainer");
 
   for (i = 0; i < upgradeList.length; i++) {
-    console.log(`${i} ${upgradeList[i].name}`);
     const newBut = document.createElement("button");
-    newBut.textContent = upgradeList[i].name;
+
+    newBut.textContent =
+      upgradeList[i].name +
+      " cost:" +
+      upgradeList[i].cost +
+      " rate:+" +
+      upgradeList[i].increase;
     newBut.id = upgradeList[i].id;
+
     // newBut.disabled = true;
+
+    newBut.style.maxWidth = "150px";
     newBut.addEventListener("click", function (event) {
       upgradeButtonClicked(event);
     });
@@ -81,9 +76,14 @@ async function getUpgrades() {
 
 function upgradeButtonClicked(event) {
   console.log("upgrade clicked the event is", event.target.id);
+  // we now have the button id that we can use to grab
 }
 
 //===========================================================================
 // will move this to a proper location later (honest!)
+
+//Todo: load local storage if it exists
 getUpgrades();
 initInterval();
+
+todo: workout how to set the autoclicker value and apply it
