@@ -3,7 +3,7 @@ Cookie Clicker Game plan:
 
 Task list (branches?)
     
-    Create the Repo and clone it (so I have somewhere to save this file!
+    Create the Repo and clone it (so I have somewhere to save this file!)
 
     Create game wire frames:
         I plan of tackling the CSS last after I have a fully working game
@@ -14,7 +14,6 @@ Task list (branches?)
         the upgrades will sit in a column to the left of the cookie image
         the upgrades will include a reset upgrade option
 
-
     Build the basic HTML structure:
         container holding; 
             image of the cookie that will be clicked
@@ -23,33 +22,40 @@ Task list (branches?)
             find and add an image for the cookie
         container to hold the upgrades;
             to be filled with buttons later including the reset option        
-    
-    Get the cookie clicks working
-        
-        create a game state object
-            to hold total clicks
-            to hold clicks per second
 
-        create a callback function
-            this should update the total clicks
-            later will update storage with the current game state 
-        attach listener and call the callback on click
+    Create function to update the game state - will be called by intervale timer
+        for now just log to console
+        later;
+            add any update clicks
+            update display 
+            check score and enable upgrades as needed
+            save gameState to local storage
         
-        update the total cookie clicks text
-        
-    create a function to handle the update activity
-        create the interval timer and get it calling this function
-        start this time on page load completed
+    Create a game state object
+        to hold total clicks
+        to hold clicks per second
+        add loadState function?
+        add saveState function?
+
+    create a callback function for user mouse clicks
+        adds 1 directly to the gameState
+        directly updates the total clicks display            
     
-    We should now have the basic working game without any upgrades
+    create a function intervalTimerStart()
+        to handle the update activity
+        create the interval timer and get it calling the update function
+    call this function page load completed
         
     Create function to get the upgrade data from the API:
         first display it in the console
-        then add a button to the upgrade container for each upgrade    
-        add call for it on page load completed
+        then add a buttons to the upgrade container for each upgrade
+        attach id's to each button to include clickrate modifier
+        disable the button as default to be enabled by click update (when available)
+    call this load function on page load completed
      
-    
-    
+    Fight with the CSS demons into the late hours until it is defeated.
+
+
 
     
 
