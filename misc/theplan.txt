@@ -31,7 +31,7 @@ Task list (branches?)
             check score and enable upgrades as needed
             save gameState to local storage
         
-    Create a game state object
+    Create a game state object - Done
         to hold total clicks
         to hold clicks per second
         add loadState function?
@@ -58,4 +58,11 @@ Task list (branches?)
 
 
     
+later thoughts:
+function list:
+updateGameState() called by interval times - for house keeping tasks
+userMouseClick() called by the cookie image being clicked by user
+initInterval() sets up and starts the interval timer called when page loadState
+getUpgrades() calls the upgrades API to get all the upgrades, called when page loads
 
+~ expect to need a getUpgradesComplete() function to be called when the promise is kept or broken

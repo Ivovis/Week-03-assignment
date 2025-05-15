@@ -11,3 +11,7 @@ my plan is to use the same layout for desktop and center it on the screen, I nee
 I will start with no styling and just get the game working, then add the styling.
 
 ---
+
+Basic framework completed, Not used branches for the task, forgot, will play with branches outside the assignment later
+
+---
