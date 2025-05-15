@@ -1,7 +1,7 @@
 // the game state object
 let gameState = {
-  totalClicks: 0,
-  clickRate: 0.0,
+  totalClicks: 0, // Numbers go up!
+  clickRate: 0, // added to totalClicks every second
 };
 
 let upgradeList = [];
@@ -10,6 +10,7 @@ let upgradeList = [];
 // update game state function, called every one second by interval timer
 function updateGameState() {
   //console.log("updateGameState called");
+  TODO: update the displayed click Count and the update rate
 }
 
 //===========================================================================
@@ -75,8 +76,29 @@ async function getUpgrades() {
 }
 
 function upgradeButtonClicked(event) {
-  console.log("upgrade clicked the event is", event.target.id);
-  // we now have the button id that we can use to grab
+  // get the button ID and create the index to access the upgrade values
+  const idx = event.target.id - 1;
+
+  // grab the correct upgrade values from the upgrades array
+  const additionalRate = upgradeList[idx].increase;
+  const newRateCost = upgradeList[idx].cost;
+
+  // this is where I checked them
+  // console.log(
+  //   "the rate to be added to our update",
+  //   additionalRate,
+  //   "costing",
+  //   newRateCost
+  // );
+
+  // This rate is going to be added to the cookie count every second
+  // the total per second is 3886 if we only allow a single purchase of each upgrade
+  // JS will run for Number.MAX_SAFE_INTEGER/3886/60/60/24/365.25 years
+  // that will be 73448.51285195282 years exceeding the life expectancy of nearly all users.
+  // I will not need to limit the number of upgrade purchases!
+
+  gameState.totalClicks -= newRateCost;
+  gameState.clickRate += additionalRate;
 }
 
 //===========================================================================
@@ -85,5 +107,3 @@ function upgradeButtonClicked(event) {
 //Todo: load local storage if it exists
 getUpgrades();
 initInterval();
-
-todo: workout how to set the autoclicker value and apply it
