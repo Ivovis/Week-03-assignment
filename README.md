@@ -15,3 +15,8 @@ I will start with no styling and just get the game working, then add the styling
 Basic framework completed, Not used branches for the task, forgot, will play with branches outside the assignment later
 
 ---
+
+checkpoint2: I have managed to add buttons matching the returned upgrades from the API, I have configured the buttons ID to match the upgrades ID and use the same callback function passing the event, then logging to console within that function the ID of the calling button.
+all happy at the moment, not sure I'm doing the buttons call back correctly, I am calling an anon function that just calls my function passing the event, this seems a bit ungainly, I have a feeling that I should just be calling 'my' callback function and skipping the anon part altogether.
+
+I'll push my assignment now with the message checkpoint2
