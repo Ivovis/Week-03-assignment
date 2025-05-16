@@ -135,9 +135,11 @@ function updateDisplay() {
 }
 
 //===========================================================================
-// will move this to a proper location later (honest!)
-
-//Todo: load local storage if it exists
-getUpgrades();
-initInterval();
-updateDisplay();
+// This just feels more tidy now!
+document.addEventListener("DOMContentLoaded", () => {
+  //Todo: load local storage if it exists
+  getUpgrades();
+  initInterval();
+  updateDisplay();
+  console.log("setup run and complete");
+});
