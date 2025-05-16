@@ -69,4 +69,10 @@ getUpgrades() calls the upgrades API to get all the upgrades, called when page l
 todo:
 add persistence with local save - done
 add proper init just having the calls at the bottom of the app.js feels wrong.  - done
-add upgrade button that will reset the game
+add upgrade button that will reset the game - done
+
+get the styling to match the wireframe
+
+get the app responsive to different screen sizes - desktop to be a centered version of the mobile layout - later use the external desktop space for graphics that will be updated every time an upgrade is bought.
+
+

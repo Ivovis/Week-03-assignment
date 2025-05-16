@@ -1,10 +1,11 @@
+// post and pre text for the on screen display - incase I turn them into something other than cookies later.
 const totalClicksText = " Cookies";
 const totalRateText = "Cookies per second: ";
 
-// the game state object
+// The game state object
 let gameState = {
-  totalClicks: 95, // Numbers go up!
-  clickRate: 0, // added to totalClicks every second
+  totalClicks: 0,
+  clickRate: 0,
   save: function () {
     localStorage.setItem("cookieGameSave", JSON.stringify(this));
   },
@@ -22,11 +23,9 @@ let gameState = {
   },
 };
 
-// I am remember
-
+// local global storage for all the upgrade options
 let upgradeList = [];
 
-//===========================================================================
 // update game state function, called every second by interval timer
 function updateGameState() {
   gameState.totalClicks += gameState.clickRate;
@@ -34,7 +33,6 @@ function updateGameState() {
   checkUpgradeAvailability();
 }
 
-//===========================================================================
 // called by the cookie image being clicked by user
 function userMouseClick() {
   gameState.totalClicks += 1;
@@ -42,7 +40,6 @@ function userMouseClick() {
   checkUpgradeAvailability();
 }
 
-//===========================================================================
 //  sets up and starts the interval timer called when page loadState
 function initInterval() {
   setInterval(updateGameState, 1000);
@@ -56,7 +53,6 @@ function initInterval() {
     });
 }
 
-//===========================================================================
 //  calls the upgrades API to get all the upgrades, called when page loads
 // adds in the upgrade buttons and configures them
 async function getUpgrades() {
@@ -107,7 +103,6 @@ async function getUpgrades() {
   upCon.appendChild(newBut);
 }
 
-//===========================================================================
 // called by any upgrade button
 function upgradeButtonClicked(event) {
   // Use the button's ID to create the index for the correct upgrade values
@@ -139,7 +134,6 @@ function upgradeButtonClicked(event) {
   checkUpgradeAvailability();
 }
 
-//===========================================================================
 // update the upgrade enabled status
 function checkUpgradeAvailability() {
   // loop through the upgradeList and enable/disable buttons as needed
@@ -154,7 +148,6 @@ function checkUpgradeAvailability() {
   }
 }
 
-//===========================================================================
 // update display (its called from more than one place in code so extracted it here)
 function updateDisplay() {
   document.getElementById("clicksTotalText").textContent =
@@ -171,5 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
   getUpgrades();
   initInterval();
   updateDisplay();
-  console.log("setup run and complete");
 });

@@ -38,3 +38,8 @@ I added a game reset button to my upgrades and its working fine, I wanted to che
 I'm now off to slay my CSS demons wish me luck!
 
 ---
+
+Checkpoint 5: 2025 05 16 1719
+Made progress and killed a couple of CSS demons, still work to do but I am happy with the small screen styling so far, I see so many options I could add looking forward to pushing the design in different directions.
+
+---

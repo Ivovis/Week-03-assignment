@@ -4,3 +4,27 @@
   box-sizing: border-box;
   /* background-color: blueviolet; */
 }
+
+body {
+  border: 8px solid red;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100dvh;
+}
+
+#upgradesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+#cookieContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
