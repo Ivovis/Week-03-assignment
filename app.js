@@ -1,34 +1,37 @@
+const totalClicksText = " Cookies";
+const totalRateText = "Cookies per second: ";
+
 // the game state object
 let gameState = {
-  totalClicks: 0, // Numbers go up!
+  totalClicks: 95, // Numbers go up!
   clickRate: 0, // added to totalClicks every second
 };
 
 let upgradeList = [];
 
 //===========================================================================
-// update game state function, called every one second by interval timer
+// update game state function, called every second by interval timer
 function updateGameState() {
-  //console.log("updateGameState called");
-  TODO: update the displayed click Count and the update rate
+  gameState.totalClicks += gameState.clickRate;
+  updateDisplay();
+  checkUpgradeAvailability();
 }
 
 //===========================================================================
 // called by the cookie image being clicked by user
 function userMouseClick() {
   gameState.totalClicks += 1;
-  document.getElementById("clicksTotalText").textContent =
-    gameState.totalClicks + " clicks";
+  updateDisplay();
+  checkUpgradeAvailability();
 }
 
 //===========================================================================
 //  sets up and starts the interval timer called when page loadState
 function initInterval() {
-  console.log("initInterval() called");
   setInterval(updateGameState, 1000);
 
   // adding call back to the cookie image here
-  // this could be moved to the proper location later
+  // this should be moved to the proper location later
   document
     .getElementById("theCookieButton")
     .addEventListener("click", function (event) {
@@ -56,7 +59,7 @@ async function getUpgrades() {
 
   for (i = 0; i < upgradeList.length; i++) {
     const newBut = document.createElement("button");
-
+    // this is ugly programmer art, will replace (honest!)
     newBut.textContent =
       upgradeList[i].name +
       " cost:" +
@@ -64,26 +67,29 @@ async function getUpgrades() {
       " rate:+" +
       upgradeList[i].increase;
     newBut.id = upgradeList[i].id;
-
-    // newBut.disabled = true;
-
+    newBut.disabled = true;
     newBut.style.maxWidth = "150px";
-    newBut.addEventListener("click", function (event) {
-      upgradeButtonClicked(event);
-    });
+    // newBut.addEventListener("click", function (event) {
+    //   upgradeButtonClicked(event);
+    // });
+    // this is neater!
+    newBut.addEventListener("click", upgradeButtonClicked);
     upCon.appendChild(newBut);
   }
 }
 
+//===========================================================================
+// called by any upgrade button
 function upgradeButtonClicked(event) {
-  // get the button ID and create the index to access the upgrade values
+  // Use the button's ID to create the index for the correct upgrade values
   const idx = event.target.id - 1;
 
   // grab the correct upgrade values from the upgrades array
+  // I know I can skip this and just upgrade the values as I do below ..
   const additionalRate = upgradeList[idx].increase;
   const newRateCost = upgradeList[idx].cost;
 
-  // this is where I checked them
+  // but I wanted to checked them like this first
   // console.log(
   //   "the rate to be added to our update",
   //   additionalRate,
@@ -91,14 +97,41 @@ function upgradeButtonClicked(event) {
   //   newRateCost
   // );
 
-  // This rate is going to be added to the cookie count every second
-  // the total per second is 3886 if we only allow a single purchase of each upgrade
-  // JS will run for Number.MAX_SAFE_INTEGER/3886/60/60/24/365.25 years
-  // that will be 73448.51285195282 years exceeding the life expectancy of nearly all users.
-  // I will not need to limit the number of upgrade purchases!
+  /*
+  Thoughts:
+    This rate increase is going to be added to the cookie count every second  
+    the total per second is 3886 (if we only allow a single purchase of each upgrade)
+    JS 'Number' has room for Number.MAX_SAFE_INTEGER/3886/60/60/24/365.25 years that will be 73448.51285195282 years exceeding the life expectancy of nearly all users. I will not need to limit the number of upgrade purchases.
+*/
 
   gameState.totalClicks -= newRateCost;
   gameState.clickRate += additionalRate;
+  updateDisplay();
+  checkUpgradeAvailability();
+}
+
+//===========================================================================
+// update the upgrade enabled status
+function checkUpgradeAvailability() {
+  // loop through the upgradeList and enable/disable buttons as needed
+
+  for (i = 0; i < upgradeList.length; i++) {
+    const butElement = document.getElementById(i + 1);
+    if (gameState.totalClicks < upgradeList[i].cost) {
+      butElement.disabled = true;
+    } else {
+      butElement.disabled = false;
+    }
+  }
+}
+
+//===========================================================================
+// update display (its called from more than one place in code so extracted it here)
+function updateDisplay() {
+  document.getElementById("clicksTotalText").textContent =
+    gameState.totalClicks + totalClicksText;
+  document.getElementById("clickRateText").textContent =
+    totalRateText + gameState.clickRate;
 }
 
 //===========================================================================
@@ -107,3 +140,4 @@ function upgradeButtonClicked(event) {
 //Todo: load local storage if it exists
 getUpgrades();
 initInterval();
+updateDisplay();

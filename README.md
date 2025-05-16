@@ -16,7 +16,15 @@ Basic framework completed, Not used branches for the task, forgot, will play wit
 
 ---
 
-checkpoint2: I have managed to add buttons matching the returned upgrades from the API, I have configured the buttons ID to match the upgrades ID and use the same callback function passing the event, then logging to console within that function the ID of the calling button.
+checkpoint 2: I have managed to add buttons matching the returned upgrades from the API, I have configured the buttons ID to match the upgrades ID and use the same callback function passing the event, then logging to console within that function the ID of the calling button.
 all happy at the moment, not sure I'm doing the buttons call back correctly, I am calling an anon function that just calls my function passing the event, this seems a bit ungainly, I have a feeling that I should just be calling 'my' callback function and skipping the anon part altogether.
 
 I'll push my assignment now with the message checkpoint2
+
+---
+
+Checkpoint 3: 2025 05 0943
+I now have a functioning app with no styling and no local save feature.
+all going well nearly started researching favicon just to remove the warning kicked out by firefox dev tools, but keeping on track...
+
+---
