@@ -5,7 +5,24 @@ const totalRateText = "Cookies per second: ";
 let gameState = {
   totalClicks: 95, // Numbers go up!
   clickRate: 0, // added to totalClicks every second
+  save: function () {
+    localStorage.setItem("cookieGameSave", JSON.stringify(this));
+  },
+  load: function () {
+    const saveState = localStorage.getItem("cookieGameSave");
+
+    if (saveState) {
+      console.log("found save - restoring:", saveState);
+      data = JSON.parse(saveState);
+      this.totalClicks = data.totalClicks;
+      this.clickRate = data.clickRate;
+    } else {
+      console.log("no save found - using defaults", saveState);
+    }
+  },
 };
+
+// I am remember
 
 let upgradeList = [];
 
@@ -68,7 +85,7 @@ async function getUpgrades() {
       upgradeList[i].increase;
     newBut.id = upgradeList[i].id;
     newBut.disabled = true;
-    newBut.style.maxWidth = "150px";
+    newBut.style.maxWidth = "150px"; //TODO: remove before tackling CSS
     // newBut.addEventListener("click", function (event) {
     //   upgradeButtonClicked(event);
     // });
@@ -76,6 +93,18 @@ async function getUpgrades() {
     newBut.addEventListener("click", upgradeButtonClicked);
     upCon.appendChild(newBut);
   }
+  // add button to the upgradeContainer to reset the game
+  // no warning or alerts, this is a brutal learn the hard way reset
+  const newBut = document.createElement("button");
+  newBut.textContent = "Reset Game";
+  newBut.id = "resetGame";
+  newBut.style.maxWidth = "150px";
+  newBut.addEventListener("click", function (event) {
+    gameState.totalClicks = 0;
+    gameState.clickRate = 0;
+    updateDisplay();
+  });
+  upCon.appendChild(newBut);
 }
 
 //===========================================================================
@@ -132,12 +161,13 @@ function updateDisplay() {
     gameState.totalClicks + totalClicksText;
   document.getElementById("clickRateText").textContent =
     totalRateText + gameState.clickRate;
+  gameState.save(); // saving here seems most logical
 }
 
 //===========================================================================
 // This just feels more tidy now!
 document.addEventListener("DOMContentLoaded", () => {
-  //Todo: load local storage if it exists
+  gameState.load();
   getUpgrades();
   initInterval();
   updateDisplay();

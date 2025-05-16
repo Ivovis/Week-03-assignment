@@ -28,3 +28,13 @@ I now have a functioning app with no styling and no local save feature.
 all going well nearly started researching favicon just to remove the warning kicked out by firefox dev tools, but keeping on track...
 
 ---
+
+Checkpoint 4: 2025 05 10:57
+I now have the local storage working and learned that using two different browsers (brave and firefox) will behave the same as using two different devices.
+I have experience of object oriented programming so wondered if I could just give my gameState object methods for loading and saving - turns out I can but I know this is outside the scope of the boot camp, keeping this (oh the irony) in mind would I have been correct to have had normal (like all the rest) functions for save and load that would update the gameState values? I don't remember if we covered creating methods on objects.
+
+I added a game reset button to my upgrades and its working fine, I wanted to check that my system of updating the enabled state of the buttons behaved fine and its seems ok, looking closer ID's are unique to the page and the upgrade update function will never access it - all good.
+
+I'm now off to slay my CSS demons wish me luck!
+
+---

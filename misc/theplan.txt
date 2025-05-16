@@ -56,7 +56,6 @@ Task list (branches?)
     Fight with the CSS demons into the late hours until it is defeated.
 
 
-
     
 later thoughts:
 function list:
@@ -65,4 +64,9 @@ userMouseClick() called by the cookie image being clicked by user
 initInterval() sets up and starts the interval timer called when page loadState
 getUpgrades() calls the upgrades API to get all the upgrades, called when page loads
 
-~ expect to need a getUpgradesComplete() function to be called when the promise is kept or broken
+~ expect to need a getUpgradesComplete() function to be called when the promise is kept or broken - this was not needed its all builtin.
+
+todo:
+add persistence with local save - done
+add proper init just having the calls at the bottom of the app.js feels wrong.  - done
+add upgrade button that will reset the game
