@@ -53,7 +53,8 @@ function initInterval() {
     });
 }
 
-//  calls the upgrades API to get all the upgrades, called when page loads
+// Call the upgrades API to get all the upgrades
+// Called when page is loaded
 // adds in the upgrade buttons and configures them
 async function getUpgrades() {
   const response = await fetch(
@@ -103,7 +104,7 @@ async function getUpgrades() {
   upCon.appendChild(newBut);
 }
 
-// called by any upgrade button
+// Will be called by any upgrade button on click
 function upgradeButtonClicked(event) {
   // Use the button's ID to create the index for the correct upgrade values
   const idx = event.target.id - 1;
@@ -136,8 +137,6 @@ function upgradeButtonClicked(event) {
 
 // update the upgrade enabled status
 function checkUpgradeAvailability() {
-  // loop through the upgradeList and enable/disable buttons as needed
-
   for (i = 0; i < upgradeList.length; i++) {
     const butElement = document.getElementById(i + 1);
     if (gameState.totalClicks < upgradeList[i].cost) {
@@ -148,16 +147,15 @@ function checkUpgradeAvailability() {
   }
 }
 
-// update display (its called from more than one place in code so extracted it here)
+// update display and save the gameState
 function updateDisplay() {
   document.getElementById("clicksTotalText").textContent =
     gameState.totalClicks + totalClicksText;
   document.getElementById("clickRateText").textContent =
     totalRateText + gameState.clickRate;
-  gameState.save(); // saving here seems most logical
+  gameState.save();
 }
 
-//===========================================================================
 // This just feels more tidy now!
 document.addEventListener("DOMContentLoaded", () => {
   gameState.load();
