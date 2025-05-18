@@ -5,16 +5,15 @@
 }
 
 body {
-  border: 8px solid red; /* this was just to prove to myself that this file is actually being used!*/
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100dvh;
 }
 
 #upgradesContainer {
   width: 150px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 10px;
 
   display: flex;
@@ -31,9 +30,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid red;
   align-items: center;
   gap: 1rem;
   height: 80%;
 }
 
+#theFixedGap {
+  min-width: 30px;
+}

@@ -65,6 +65,14 @@ and thats all the best parts, because I still need to spend much more time learn
 
 ---
 
+Checkpoint 7: I couldn't leave it alone, I added another container and gave it a minimum width, this give me exactly the behavior I was aiming for. feeling a little more content now
+
+**important note**
+
+- app.js has a constant named gradingPersonsLittleHelper it is set to 50, this was added so the application could be tested by yourself without using up so much more skin clicking all them cookies, cats, ram sticks and whatever else got added over the weekend! if you set it to 0 you will get the 'production' version needing the full amount of clicks to unlock the upgrades.
+
+---
+
 Sources:
 The audio file downloaded from https://pixabay.com/sound-effects/crunchy-foot-96992/
 This was shortened using Audacity and exported as in the ogg format with a new name.
