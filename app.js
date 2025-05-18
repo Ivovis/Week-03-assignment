@@ -2,6 +2,12 @@
 const totalClicksText = " Cookies";
 const totalRateText = "Cookies per second: ";
 
+// added sound
+const crunchSound = new Audio("./media/crunchy-biscuit.ogg");
+
+// added finger clicking saver to help with testing
+gradingPersonsLittleHelper = 50;
+
 // The game state object
 let gameState = {
   totalClicks: 0,
@@ -35,7 +41,9 @@ function updateGameState() {
 
 // called by the cookie image being clicked by user
 function userMouseClick() {
-  gameState.totalClicks += 1;
+  gameState.totalClicks += 1 + gradingPersonsLittleHelper;
+  crunchSound.currentTime = 0;
+  crunchSound.play();
   updateDisplay();
   checkUpgradeAvailability();
 }
@@ -82,7 +90,7 @@ async function getUpgrades() {
       upgradeList[i].increase;
     newBut.id = upgradeList[i].id;
     newBut.disabled = true;
-    newBut.style.maxWidth = "150px"; //TODO: remove before tackling CSS
+    // newBut.style.maxWidth = "150px"; //TODO: remove before tackling CSS
     // newBut.addEventListener("click", function (event) {
     //   upgradeButtonClicked(event);
     // });

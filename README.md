@@ -43,3 +43,30 @@ Checkpoint 5: 2025 05 16 1719
 Made progress and killed a couple of CSS demons, still work to do but I am happy with the small screen styling so far, I see so many options I could add looking forward to pushing the design in different directions.
 
 ---
+
+Checkpoint 6: Final submission
+
+Requirements check:
+
+- Fetch upgrade data from the provided API and at least one upgrade from the API update the cookie count.
+  <br> Confident I managed this.
+- Ensure functions are used effectively.
+  <br> The comments make it look ugly, would normally remove, else happy with the resulting functionality.
+- Implement event listeners to handle user interactions.
+  <br> Three implemented one for interval time, one for (any) upgrade button press and one for the cookie click.
+- Use local storage to save and restore the cookie count and relevant game information.
+  <br> I seem to have got this working ok, noticed that local saves are browser dependent, ie two browsers firefox and brave store localdata as if it were two different devices.
+- Use setInterval to increment the cookie count and manage the game state each second.
+  <br> Every second Sir like clockwork!
+
+The only stretch goal I may have met was managing all upgrades using a single function, namely upgradeButtonClicked() it uses the button id to calculate the index of the upgradeList array, This is weak because if the API changes, everything could fall apart.
+
+and thats all the best parts, because I still need to spend much more time learning CSS, I wanted to have a fixed space between the two container elements and any spare space taken up on both margins, I know this will likely come to me at 10:01pm tonight!
+
+---
+
+Sources:
+The audio file downloaded from https://pixabay.com/sound-effects/crunchy-foot-96992/
+This was shortened using Audacity and exported as in the ogg format with a new name.
+
+The cookie image is from https://commons.wikimedia.org/wiki/File:Cookie.svg
